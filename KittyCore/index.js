@@ -46,7 +46,7 @@ const call = document.querySelector('#call')
 
 send.addEventListener('click', () => {
   send.innerHTML = '发送中....'
-  tronApi.contract.exchange(1, 2, 'EOS', "KBY").send({
+  tronApi.contract.transfer('41D8D825D9BE3C6FFC5F878CA37EE4FE927EF41302', 3).send({
     shouldPollResponse: true,
     callValue: 0,
   }).then(res => {
@@ -59,8 +59,8 @@ send.addEventListener('click', () => {
 })
 
 call.addEventListener('click', () => {
-  tronApi.contract.getuint256(4).call().then(resp => {
-    console.log(resp, parseInt(resp.value._hex, 16), 'toNumber')
+  tronApi.contract.ownerOf(3).call().then(resp => {
+    console.log(resp, 'toNumber')
   })
 })
 
