@@ -35,7 +35,7 @@ const tronApi = {
   contract: false,
   setTronWeb (tronWeb) {
     this.tronWeb = tronWeb;
-    this.contract = tronWeb.contract(contracts.abi, '41640d100aa367deb818525c46fe02e7e13df5d693')
+    this.contract = tronWeb.contract(contracts.abi, '41a260aed6724be27b496cfdcda13b9fc1f8fff766') // Sale
   }
 }
 
@@ -46,7 +46,7 @@ const call = document.querySelector('#call')
 
 send.addEventListener('click', () => {
   send.innerHTML = '发送中....'
-  tronApi.contract.exchange(1, 2, 'EOS', "KBY").send({
+  tronApi.contract.cancelAuction(7).send({
     shouldPollResponse: true,
     callValue: 0,
   }).then(res => {
@@ -59,8 +59,14 @@ send.addEventListener('click', () => {
 })
 
 call.addEventListener('click', () => {
-  tronApi.contract.getuint256(4).call().then(resp => {
-    console.log(resp, parseInt(resp.value._hex, 16), 'toNumber')
+  tronApi.contract.getAuction(7).call().then(resp => {
+    console.log(resp,  'toNumber')
+  })
+})
+
+call_1.addEventListener('click', () => {
+  tronApi.contract.getCurrentPrice(7).call().then(resp => {
+    console.log(resp,  'toNumber')
   })
 })
 

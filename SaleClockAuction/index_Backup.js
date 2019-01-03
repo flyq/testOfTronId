@@ -35,33 +35,39 @@ const tronApi = {
   contract: false,
   setTronWeb (tronWeb) {
     this.tronWeb = tronWeb;
-    this.contract = tronWeb.contract(contracts.abi, '416730b9f6b9c92676f125cae9aa847c2152d1e8b5') // Siring
+    this.contract = tronWeb.contract(contracts.abi, '41a260aed6724be27b496cfdcda13b9fc1f8fff766') // Sale
   }
 }
 
 
-const send = document.querySelector('#send')
-const call = document.querySelector('#call')
+window.onload = function () {
+    const send = document.querySelector('#send')
+    const call = document.querySelector('#call')
 
 
-send.addEventListener('click', () => {
-  send.innerHTML = '发送中....'
-  tronApi.contract.exchange(1, 2, 'EOS', "KBY").send({
-    shouldPollResponse: true,
-    callValue: 0,
-  }).then(res => {
-    send.innerHTML = '已发送'
-    console.log('success', res)
-  }).catch(err => {
-    send.innerHTML = '已发送'
-    console.log('error', err)
-  })
-})
+    send.addEventListener('click', () => {
+        send.innerHTML = '发送中....'
+        tronApi.contract.cancelAuction(6).send({
+            shouldPollResponse: true,
+            callValue: 0,
+        }).then(res => {
+            send.innerHTML = '已发送'
+            console.log('success', res)
+        }).catch(err => {
+            send.innerHTML = '已发送'
+            console.log('error', err)
+        })
+    })
 
-call.addEventListener('click', () => {
-  tronApi.contract.getuint256(4).call().then(resp => {
-    console.log(resp, parseInt(resp.value._hex, 16), 'toNumber')
-  })
-})
+    call.addEventListener('click', () => {
+        let id = document.querySelector('.idolId').value
+        console.log(id);
+
+        tronApi.contract.getAuction(id).call().then(resp => {
+            console.log(resp,  'toNumber')
+        })
+    })
+
+}
 
 
