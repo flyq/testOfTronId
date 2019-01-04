@@ -65,10 +65,10 @@ send.addEventListener('click', () => {
   //tronApi.contract.transfer('411E0A50756D04C37DE98F0503A619EEA55EC98618',6).send({
   //tronApi.contract.bidOnSiringAuction(5,6).send({
   //tronApi.contract.createPromoKitty(23575434525,'410948FA8C9DAB10C0DC7A5D7A0C550E99DAFF4D41').send({
-  tronApi.contract.giveBirth(6).send({
+  tronApi.contract.createSiringAuction(6,100000,1000000,36000).send({
 
     shouldPollResponse: true,
-    callValue: 1000000,
+    callValue: 0,
   }).then(res => {
     send.innerHTML = '已发送'
     console.log('success', res)
