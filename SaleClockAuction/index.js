@@ -48,10 +48,10 @@ send.addEventListener('click', () => {
   send.innerHTML = '发送中....'
   //tronApi.contract.cancelAuction(7).send({
     
-  tronApi.contract.bid(3).send({  
+  tronApi.contract.bid(16).send({  
     
     shouldPollResponse: true,
-    callValue: 2000000,
+    callValue: 20000000,
   }).then(res => {
     send.innerHTML = '已发送'
     console.log('success', res)
@@ -62,13 +62,13 @@ send.addEventListener('click', () => {
 })
 
 call.addEventListener('click', () => {
-  tronApi.contract.getAuction(3).call().then(resp => {
+  tronApi.contract.getAuction(16).call().then(resp => {
     console.log(resp,  'toNumber')
   })
 })
 
 call_1.addEventListener('click', () => {
-  tronApi.contract.getCurrentPrice(3).call().then(resp => {
+  tronApi.contract.getCurrentPrice(16).call().then(resp => {
     console.log(resp,  'toNumber')
   })
 })

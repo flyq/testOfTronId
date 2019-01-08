@@ -81,7 +81,7 @@ send.addEventListener('click', () => {
 })
 
 call_0.addEventListener('click', () => {
-  tronApi.contract.ownerOf(3).call().then(resp => {
+  tronApi.contract.ownerOf(16).call().then(resp => {
     console.log(resp, 'toNumber')
   })
 })
