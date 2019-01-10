@@ -67,10 +67,11 @@ send.addEventListener('click', () => {
   //tronApi.contract.createPromoKitty(23575434525,'410948FA8C9DAB10C0DC7A5D7A0C550E99DAFF4D41').send({
   //tronApi.contract.createSaleAuction(18,100000000,100000000,3600).send({
   //tronApi.contract.breedWithAuto(13,15).send({
-  tronApi.contract.giveBirth(13).send({  
+  //tronApi.contract.giveBirth(13).send({  
+  tronApi.contract.setCOO('4156DBE7355E88C2B24CA8CAC24D2CA613CFD8122D').send({  
 
     shouldPollResponse: true,
-    callValue: 2000000,
+    callValue: 0,
   }).then(res => {
     send.innerHTML = '已发送'
     console.log('success', res)
@@ -81,13 +82,13 @@ send.addEventListener('click', () => {
 })
 
 call_0.addEventListener('click', () => {
-  tronApi.contract.ownerOf(16).call().then(resp => {
+  tronApi.contract.ceoAddress().call().then(resp => {
     console.log(resp, 'toNumber')
   })
 })
 
 call_1.addEventListener('click', () => {
-  tronApi.contract.ownerOf(15).call().then(resp => {
+  tronApi.contract.cooAddress().call().then(resp => {
     console.log(resp, 'toNumber')
   })
 })
