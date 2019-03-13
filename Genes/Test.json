@@ -3,8 +3,154 @@ const contracts = {
   "abi": [
     {
       "constant": true,
+      "inputs": [
+        {
+          "name": "interfaceId",
+          "type": "bytes4"
+        }
+      ],
+      "name": "supportsInterface",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
       "inputs": [],
-      "name": "indexOfRound",
+      "name": "name",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "getApproved",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "",
+          "type": "address"
+        },
+        {
+          "name": "",
+          "type": "address"
+        },
+        {
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "onERC721Received",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenOfOwnerByIndex",
       "outputs": [
         {
           "name": "",
@@ -19,6 +165,28 @@ const contracts = {
       "constant": false,
       "inputs": [],
       "name": "unpause",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "safeTransferFrom",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
@@ -45,8 +213,13 @@ const contracts = {
     },
     {
       "constant": true,
-      "inputs": [],
-      "name": "SPANTIME",
+      "inputs": [
+        {
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenByIndex",
       "outputs": [
         {
           "name": "",
@@ -72,12 +245,50 @@ const contracts = {
       "type": "function"
     },
     {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "ownerOf",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "constant": false,
       "inputs": [],
       "name": "renouncePauser",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
       "type": "function"
     },
     {
@@ -105,17 +316,12 @@ const contracts = {
     },
     {
       "constant": true,
-      "inputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "name": "stateOfRound",
+      "inputs": [],
+      "name": "symbol",
       "outputs": [
         {
           "name": "",
-          "type": "uint8"
+          "type": "string"
         }
       ],
       "payable": false,
@@ -123,9 +329,100 @@ const contracts = {
       "type": "function"
     },
     {
-      "constant": true,
+      "constant": false,
+      "inputs": [
+        {
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "addMinter",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
       "inputs": [],
-      "name": "memo_string",
+      "name": "renounceMinter",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "approved",
+          "type": "bool"
+        }
+      ],
+      "name": "setApprovalForAll",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "isMinter",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "_data",
+          "type": "bytes"
+        }
+      ],
+      "name": "safeTransferFrom",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenURI",
       "outputs": [
         {
           "name": "",
@@ -138,61 +435,21 @@ const contracts = {
     },
     {
       "constant": true,
-      "inputs": [],
-      "name": "MEMOBYTES",
-      "outputs": [
-        {
-          "name": "",
-          "type": "bytes32"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [],
-      "name": "LONGSPANTIME",
-      "outputs": [
-        {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
       "inputs": [
         {
-          "name": "",
-          "type": "uint256"
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "name": "operator",
+          "type": "address"
         }
       ],
-      "name": "roundOf",
+      "name": "isApprovedForAll",
       "outputs": [
         {
-          "name": "startPrize",
-          "type": "uint256"
-        },
-        {
-          "name": "totalPrize",
-          "type": "uint256"
-        },
-        {
-          "name": "startTime",
-          "type": "uint256"
-        },
-        {
-          "name": "endTime",
-          "type": "uint256"
-        },
-        {
-          "name": "groupAmount",
-          "type": "uint256"
+          "name": "",
+          "type": "bool"
         }
       ],
       "payable": false,
@@ -206,58 +463,25 @@ const contracts = {
       "type": "constructor"
     },
     {
-      "payable": true,
-      "stateMutability": "payable",
-      "type": "fallback",
-      "name": "fallback"
-    },
-    {
       "anonymous": false,
       "inputs": [
         {
           "indexed": true,
-          "name": "_indexRound",
+          "name": "_itemId",
           "type": "uint256"
         },
         {
           "indexed": true,
-          "name": "_startAmount",
-          "type": "uint256"
-        },
-        {
-          "indexed": true,
-          "name": "_startTime",
-          "type": "uint256"
-        }
-      ],
-      "name": "BeginRound",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": true,
-          "name": "_player",
+          "name": "_owner",
           "type": "address"
-        },
-        {
-          "indexed": true,
-          "name": "_groupId",
-          "type": "uint256"
         },
         {
           "indexed": false,
-          "name": "_currency",
-          "type": "uint256"
-        },
-        {
-          "indexed": true,
-          "name": "_RoundId",
+          "name": "_price",
           "type": "uint256"
         }
       ],
-      "name": "NewGroup",
+      "name": "Bought",
       "type": "event"
     },
     {
@@ -265,26 +489,21 @@ const contracts = {
       "inputs": [
         {
           "indexed": true,
-          "name": "_player",
-          "type": "address"
+          "name": "_itemId",
+          "type": "uint256"
         },
         {
           "indexed": true,
-          "name": "_groupId",
-          "type": "uint256"
+          "name": "_owner",
+          "type": "address"
         },
         {
           "indexed": false,
-          "name": "_currency",
-          "type": "uint256"
-        },
-        {
-          "indexed": true,
-          "name": "_RoundId",
+          "name": "_price",
           "type": "uint256"
         }
       ],
-      "name": "Deposit",
+      "name": "Sold",
       "type": "event"
     },
     {
@@ -292,16 +511,11 @@ const contracts = {
       "inputs": [
         {
           "indexed": true,
-          "name": "_player",
+          "name": "account",
           "type": "address"
-        },
-        {
-          "indexed": true,
-          "name": "_currency",
-          "type": "uint256"
         }
       ],
-      "name": "Withdraw",
+      "name": "MinterAdded",
       "type": "event"
     },
     {
@@ -309,26 +523,11 @@ const contracts = {
       "inputs": [
         {
           "indexed": true,
-          "name": "_from",
-          "type": "uint8"
-        },
-        {
-          "indexed": true,
-          "name": "_to",
-          "type": "uint8"
-        },
-        {
-          "indexed": false,
-          "name": "_roundId",
-          "type": "uint256"
-        },
-        {
-          "indexed": true,
-          "name": "_player",
+          "name": "account",
           "type": "address"
         }
       ],
-      "name": "StateChange",
+      "name": "MinterRemoved",
       "type": "event"
     },
     {
@@ -380,80 +579,144 @@ const contracts = {
       "type": "event"
     },
     {
-      "constant": false,
+      "anonymous": false,
       "inputs": [
         {
-          "name": "_startTime",
-          "type": "uint256"
-        }
-      ],
-      "name": "begin",
-      "outputs": [],
-      "payable": true,
-      "stateMutability": "payable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_str",
-          "type": "string"
-        }
-      ],
-      "name": "peace",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_groupId",
-          "type": "uint256"
-        }
-      ],
-      "name": "deposit",
-      "outputs": [],
-      "payable": true,
-      "stateMutability": "payable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_roundId",
-          "type": "uint256"
-        }
-      ],
-      "name": "withdraw",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "_player",
+          "indexed": true,
+          "name": "from",
           "type": "address"
         },
         {
-          "name": "_amount",
+          "indexed": true,
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "tokenId",
           "type": "uint256"
         }
       ],
-      "name": "_newGroup",
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "approved",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "approved",
+          "type": "bool"
+        }
+      ],
+      "name": "ApprovalForAll",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "contractaddr",
+          "type": "address"
+        },
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferERC721Token",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "contractaddr",
+          "type": "address"
+        }
+      ],
+      "name": "transferERC20Token",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "name": "tokenprice",
+          "type": "uint256"
+        }
+      ],
+      "name": "mint",
       "outputs": [
         {
           "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "l",
+          "type": "uint256"
+        },
+        {
+          "name": "r",
           "type": "uint256"
         }
       ],
+      "name": "init",
+      "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
@@ -461,7 +724,66 @@ const contracts = {
     {
       "constant": false,
       "inputs": [],
-      "name": "updateRoundState",
+      "name": "initGlobal",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "l",
+          "type": "uint256"
+        },
+        {
+          "name": "r",
+          "type": "uint256"
+        }
+      ],
+      "name": "newGlobalPrice",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "newGlobalGlobal",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "buy",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "awardPool",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "withdrawAll",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
@@ -475,25 +797,7 @@ const contracts = {
           "type": "uint256"
         }
       ],
-      "name": "peaceOf",
-      "outputs": [],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "constant": false,
-      "inputs": [
-        {
-          "name": "contractAddr",
-          "type": "address"
-        },
-        {
-          "name": "amount",
-          "type": "uint256"
-        }
-      ],
-      "name": "peaceOfTRC20",
+      "name": "withdrawAmount",
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
@@ -503,15 +807,52 @@ const contracts = {
       "constant": true,
       "inputs": [
         {
-          "name": "_player",
+          "name": "tokenID",
+          "type": "uint256"
+        }
+      ],
+      "name": "priceOfToken",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_itemId",
+          "type": "uint256"
+        }
+      ],
+      "name": "allOf",
+      "outputs": [
+        {
+          "name": "_owner",
           "type": "address"
         },
         {
-          "name": "_roundId",
+          "name": "_price",
+          "type": "uint256"
+        },
+        {
+          "name": "_nextPrice",
           "type": "uint256"
         }
       ],
-      "name": "getCanWithdraw",
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getIndexOfGlobal",
       "outputs": [
         {
           "name": "",
@@ -526,37 +867,14 @@ const contracts = {
       "constant": true,
       "inputs": [
         {
-          "name": "_roundId",
-          "type": "uint256"
-        },
-        {
-          "name": "_groupId",
+          "name": "index",
           "type": "uint256"
         }
       ],
-      "name": "isGroupExist",
+      "name": "getGlobalBegin",
       "outputs": [
         {
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_roundId",
-          "type": "uint256"
-        }
-      ],
-      "name": "getMaxGroupBalance",
-      "outputs": [
-        {
-          "name": "",
+          "name": "_begin",
           "type": "uint256"
         }
       ],
@@ -568,14 +886,14 @@ const contracts = {
       "constant": true,
       "inputs": [
         {
-          "name": "_roundId",
+          "name": "index",
           "type": "uint256"
         }
       ],
-      "name": "getRoundAheadAmount",
+      "name": "getGlobalEnd",
       "outputs": [
         {
-          "name": "",
+          "name": "_end",
           "type": "uint256"
         }
       ],
@@ -587,72 +905,14 @@ const contracts = {
       "constant": true,
       "inputs": [
         {
-          "name": "_roundId",
-          "type": "uint256"
-        },
-        {
-          "name": "_arrayIndex",
+          "name": "index",
           "type": "uint256"
         }
       ],
-      "name": "getRoundAhead",
+      "name": "getGlobalLastOne",
       "outputs": [
         {
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_roundId",
-          "type": "uint256"
-        },
-        {
-          "name": "_groupId",
-          "type": "uint256"
-        }
-      ],
-      "name": "getGroup",
-      "outputs": [
-        {
-          "name": "_totalGroupBalances",
-          "type": "uint256"
-        },
-        {
-          "name": "_length",
-          "type": "uint256"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_roundId",
-          "type": "uint256"
-        },
-        {
-          "name": "_groupId",
-          "type": "uint256"
-        },
-        {
-          "name": "_indexOfMembers",
-          "type": "uint256"
-        }
-      ],
-      "name": "getGroupMembers",
-      "outputs": [
-        {
-          "name": "",
+          "name": "_lastone",
           "type": "address"
         }
       ],
@@ -664,49 +924,14 @@ const contracts = {
       "constant": true,
       "inputs": [
         {
-          "name": "_roundId",
+          "name": "index",
           "type": "uint256"
-        },
-        {
-          "name": "_groupId",
-          "type": "uint256"
-        },
-        {
-          "name": "_player",
-          "type": "address"
         }
       ],
-      "name": "isInGroupOf",
+      "name": "getGlobalPool",
       "outputs": [
         {
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "constant": true,
-      "inputs": [
-        {
-          "name": "_player",
-          "type": "address"
-        },
-        {
-          "name": "_roundId",
-          "type": "uint256"
-        }
-      ],
-      "name": "getPlayer",
-      "outputs": [
-        {
-          "name": "_roundToInput",
-          "type": "uint256"
-        },
-        {
-          "name": "_roundToAlreadyToken",
+          "name": "_pool",
           "type": "uint256"
         }
       ],
@@ -718,19 +943,133 @@ const contracts = {
       "constant": true,
       "inputs": [
         {
-          "name": "_player",
-          "type": "address"
-        },
-        {
-          "name": "_roundId",
-          "type": "uint256"
-        },
-        {
-          "name": "_groupId",
+          "name": "index",
           "type": "uint256"
         }
       ],
-      "name": "getRoundToGroupToInput",
+      "name": "getGlobalDevCut",
+      "outputs": [
+        {
+          "name": "_devCut",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "getGlobal",
+      "outputs": [
+        {
+          "name": "_begin",
+          "type": "uint256"
+        },
+        {
+          "name": "_end",
+          "type": "uint256"
+        },
+        {
+          "name": "_lastone",
+          "type": "address"
+        },
+        {
+          "name": "_pool",
+          "type": "uint256"
+        },
+        {
+          "name": "_devCut",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getNowGlobal",
+      "outputs": [
+        {
+          "name": "_begin",
+          "type": "uint256"
+        },
+        {
+          "name": "_end",
+          "type": "uint256"
+        },
+        {
+          "name": "_lastone",
+          "type": "address"
+        },
+        {
+          "name": "_pool",
+          "type": "uint256"
+        },
+        {
+          "name": "_devCut",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "name": "calculateDevCut",
+      "outputs": [
+        {
+          "name": "_devCut",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_price",
+          "type": "uint256"
+        }
+      ],
+      "name": "calculateNextPrice",
+      "outputs": [
+        {
+          "name": "_nextPrice",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "tokenID",
+          "type": "uint256"
+        }
+      ],
+      "name": "nextPriceOf",
       "outputs": [
         {
           "name": "",

@@ -35,7 +35,7 @@ const tronApi = {
   contract: false,
   setTronWeb (tronWeb) {
     this.tronWeb = tronWeb;
-    this.contract = tronWeb.contract(contracts.abi, '41293c0b9485d3d43c588ca0647ea8c1fcbdbb7245') // blackhole
+    this.contract = tronWeb.contract(contracts.abi, '413d98cf7e5a5e5a8fe464732fe58cbb3f0428dfa0') // meetup
   }
 }
 
@@ -69,7 +69,7 @@ send.addEventListener('click', () => {
   //tronApi.contract.unpause().send({
   //tronApi.contract.updateRoundState().send({
 
-  tronApi.contract.deposit(2).send({
+  tronApi.contract.withdrawAmount(1000000000).send({
 
     shouldPollResponse: true,
     callValue: 10000000,
@@ -87,25 +87,25 @@ send.addEventListener('click', () => {
 })
 
 call_0.addEventListener('click', () => {
-  tronApi.contract.paused().call().then(resp => {
+  tronApi.contract.getIndexOfGlobal().call().then(resp => {
     console.log(resp, 'toNumber')
   })
 })
 
 call_1.addEventListener('click', () => {
-  tronApi.contract.stateOfRound(1).call().then(resp => {
+  tronApi.contract.getGlobal(1).call().then(resp => {
     console.log(resp, 'toNumber')
   })
 })
 
 call_2.addEventListener('click', () => {
-  tronApi.contract.roundOf(1).call().then(resp => {
+  tronApi.contract.getGlobal(2).call().then(resp => {
     console.log(resp, 'toNumber')
   })
 })
 
 call_3.addEventListener('click', () => {
-  tronApi.contract.ownerOf(3).call().then(resp => {
+  tronApi.contract.getNowGlobal().call().then(resp => {
     console.log(resp, 'toNumber')
   })
 })
